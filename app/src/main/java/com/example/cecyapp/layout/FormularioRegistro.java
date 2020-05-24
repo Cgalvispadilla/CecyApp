@@ -99,7 +99,7 @@ public class FormularioRegistro extends AppCompatActivity {
                     }
 
                 }else{
-                    Toast.makeText(getApplicationContext(), "¡Error! S e encuentra algun campo vació, por favor llenar todos",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "¡Error! Se encuentra algun campo vació, por favor llenar todos",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -117,8 +117,9 @@ public class FormularioRegistro extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isComplete()){
+                    String idObt = mAuth.getCurrentUser().getUid();
                     //si selecciona al cliente, se crea la tabla
-                   if(spinner.getSelectedItemPosition()==1){
+                   if(spinner.getSelectedItem().equals("Cliente")){
                        Map<String , Object> map = new HashMap<>();
                        map.put("nombres",nombre);
                        map.put("id",id);
@@ -129,7 +130,7 @@ public class FormularioRegistro extends AppCompatActivity {
                        map.put("contraseña",contraseña);
                        map.put("celular",celular);
 
-                       String idObt = mAuth.getCurrentUser().getUid();
+
                        //se agregan los datos a la database realtime
                       mDatabase.child("cliente").child(idObt).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                           @Override
@@ -140,10 +141,7 @@ public class FormularioRegistro extends AppCompatActivity {
                                 finish();
                           }
                       });
-                   }else{
-                       //se muestro un mensaje de error, si lo hay
-                       Toast.makeText(getApplicationContext(),"por favor intente nuevamente", Toast.LENGTH_LONG).show();
-                   }if(spinner.getSelectedItemPosition()==2){
+                   } else if(spinner.getSelectedItem().equals("Modista")){
                        //se repite lo que se uso el cliente, caso de la modista
                        Map<String , Object> map = new HashMap<>();
                        map.put("nombres",nombre);
