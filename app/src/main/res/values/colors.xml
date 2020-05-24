@@ -7,5 +7,6 @@
         <color name="secondaryTextColor">#000000</color>
         <color name="secondaryColor">#fff1ed</color>
         <color name="secondaryLightColor">#ffffff</color>
+        <color name="cancel">#FF1100</color>
 
 </resources>

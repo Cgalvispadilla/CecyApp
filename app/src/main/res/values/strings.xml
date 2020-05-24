@@ -11,4 +11,7 @@
     <string name="registrar">Registrar</string>
     <string name="obligatorio">*Campo Requerido</string>
     <string name="olvidocontraseña">¿Olvido su contraseña?</string>
+
+
+    <string name="text1olvidocontraseña">Ingrese el correo electronico de su cuenta</string>
 </resources>
