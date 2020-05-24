@@ -5,11 +5,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cecyapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LayoutOlvidarContrasena extends AppCompatActivity {
 
@@ -33,21 +39,44 @@ public class LayoutOlvidarContrasena extends AppCompatActivity {
         btnContra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                correo= tvCorreo.getText().toString();
-                contraseña1=tvContraseña1.getText().toString();
-                contraseña2=tvContraseña2.getText().toString();
+
                 //se valida que no haya ningún campo vació
-                if(!correo.isEmpty()&&!contraseña1.isEmpty()&&!contraseña2.isEmpty()) {
-                    CambiarContraseña();
-                }
+
             }
         });
 
     }
 
     private void CambiarContraseña() {
-        //se selecciona el lenguaje español
-        mAuth.setLanguageCode("es");
+
+
+        correo= tvCorreo.getText().toString();
+        contraseña1=tvContraseña1.getText().toString();
+        contraseña2=tvContraseña2.getText().toString();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(!correo.isEmpty()&&!contraseña1.isEmpty()&&!contraseña2.isEmpty()) {
+            if(contraseña2.equals(contraseña1)){
+                if(user.getEmail().equals(correo)){
+                    AuthCredential credential = EmailAuthProvider
+                            .getCredential(user.getEmail(),);
+                }
+
+            }
+        }
+
+
+        AuthCredential credential = EmailAuthProvider
+                .getCredential("user@example.com", "password1234");
+
+// Prompt the user to re-provide their sign-in credentials
+        user.reauthenticate(credential)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                    }
+                });
+
 
     }
 }
