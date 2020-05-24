@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/secondaryColor"
+    android:backgroundTint="@color/secondaryColor"
+    tools:context=".layout.LayoutOlvidarContrasena">
+
+    <TextView
+        android:id="@+id/tv.olvido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="@string/olvidocontraseña"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/recuperar.newpass2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/textColor"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recuperar.newpass1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/imput.newpass2"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:fontFamily="@font/rubik_regular"
+            android:hint="Repetir contraseña"
+            android:inputType="textPassword"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/secondaryTextColor"
+            app:errorEnabled="true"
+            app:helperText="@string/obligatorio"
+            app:helperTextEnabled="true"
+            app:hintAnimationEnabled="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/bt.confirmarcambio"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/rubik_regular"
+        android:text="Confirmar"
+        android:textColor="@color/secondaryLightColor"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recuperar.newpass2" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/recuperar.correo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/textColor"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/imput.recuperarcorreo"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:fontFamily="@font/rubik_regular"
+            android:hint="@string/correo"
+            android:inputType="text"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/secondaryTextColor"
+            app:errorEnabled="true"
+            app:helperText="@string/obligatorio"
+            app:helperTextEnabled="true"
+            app:hintAnimationEnabled="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv.nuevacontraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Ingrese la nueva contraseña"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recuperar.correo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/recuperar.newpass1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/textColor"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv.nuevacontraseña">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/imput.newpass1"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:fontFamily="@font/rubik_regular"
+            android:hint="Nueva contraseña"
+            android:inputType="textPassword"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/secondaryTextColor"
+            app:errorEnabled="true"
+            app:helperText="@string/obligatorio"
+            app:helperTextEnabled="true"
+            app:hintAnimationEnabled="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/text1olvidocontraseña"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv.olvido" />
+
+    <Button
+        android:id="@+id/bt.cancelar"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/rubik_regular"
+        android:text="Cancelar"
+        android:textColor="@color/secondaryLightColor"
+        android:textSize="18sp"
+        app:backgroundTint="@color/cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt.confirmarcambio" />
+</androidx.constraintlayout.widget.ConstraintLayout>
