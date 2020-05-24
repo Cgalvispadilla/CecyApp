@@ -120,6 +120,7 @@ public class FormularioRegistro extends AppCompatActivity {
                     String idObt = mAuth.getCurrentUser().getUid();
                     //si selecciona al cliente, se crea la tabla
                    if(spinner.getSelectedItem().equals("Cliente")){
+                       //se guarda en un map que se le pasara a la base de datos
                        Map<String , Object> map = new HashMap<>();
                        map.put("nombres",nombre);
                        map.put("id",id);
@@ -142,7 +143,7 @@ public class FormularioRegistro extends AppCompatActivity {
                           }
                       });
                    } else if(spinner.getSelectedItem().equals("Modista")){
-                       //se repite lo que se uso el cliente, caso de la modista
+                       //se repite lo que se uso el cliente, caso de la modista y se guarda en un map que se le pasara a la base de datos
                        Map<String , Object> map = new HashMap<>();
                        map.put("nombres",nombre);
                        map.put("id",id);
@@ -153,6 +154,8 @@ public class FormularioRegistro extends AppCompatActivity {
                        map.put("contraseña",contraseña);
                        map.put("celular",celular);
                        String idObte = mAuth.getCurrentUser().getUid();
+                       //se selecciona el id de referencia ofrecido por firebase
+                       // se le sobre carga con los datos y se guardan en el realtime database
                        mDatabase.child("modista").child(idObte).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                            @Override
                            public void onComplete(@NonNull Task<Void> task) {
@@ -161,7 +164,7 @@ public class FormularioRegistro extends AppCompatActivity {
                            }
                        });
                    }else{
-                       Toast.makeText(getApplicationContext(),"por favor intente nuevamente", Toast.LENGTH_LONG).show();
+                       Toast.makeText(getApplicationContext(),"Ha ocurrido un error, por favor intente nuevamente", Toast.LENGTH_LONG).show();
                    }
                    //
                 }
