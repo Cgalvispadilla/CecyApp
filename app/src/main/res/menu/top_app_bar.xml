@@ -5,11 +5,13 @@
 
     <group android:checkableBehavior="single">
 
-    <item android:title="@string/menu_home" android:icon="@drawable/ic_menu_camera" android:id="@+id/nav_home"/>
+    <item android:title="Agregar Productos" android:icon="@drawable/ic_moda" android:id="@+id/nav_home"/>
 
-    <item android:title="@string/menu_gallery" android:icon="@drawable/ic_menu_gallery" android:id="@+id/nav_gallery"/>
+    <item android:title="Registrar Modista" android:icon="@drawable/ic_modista_" android:id="@+id/nav_gallery"/>
 
-    <item android:title="@string/menu_slideshow" android:icon="@drawable/ic_menu_slideshow" android:id="@+id/nav_slideshow"/>
+    <item android:title="Agenda" android:icon="@drawable/ic_agenda" android:id="@+id/nav_slideshow"/>
+
+        <item android:title="Contabilidad" android:icon="@drawable/ic_contabilidad" android:id="@+id/contabilidad"/>
 
 </group>
 

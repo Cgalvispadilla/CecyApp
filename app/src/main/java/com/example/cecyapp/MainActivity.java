@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         tvCorreoEle = (TextInputEditText) findViewById(R.id.imput_usuario);
         tvContraseña = (TextInputEditText) findViewById(R.id.imput_contra);
         btnSesion = (Button) findViewById(R.id.but_iniciarsesion);
-
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 

@@ -26,4 +26,8 @@
     <string name="apellidos">Apellidos</string>
     <string name="edad">Edad</string>
     <string name="direccion">Dirección</string>
+    <string name="title_activity_drawer_vmodista">DrawerVmodista</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
