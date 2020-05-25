@@ -16,7 +16,6 @@ import com.example.cecyapp.layout.LayoutModista;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -64,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 correo = tvCorreoEle.getText().toString();
                 contraseña = tvContraseña.getText().toString();
-
                 if (!correo.isEmpty() && !contraseña.isEmpty()) {
                     ingresarUsuario();
 
@@ -85,41 +83,14 @@ public class MainActivity extends AppCompatActivity {
     private void ingresarUsuario() {
 
         mAuth.signInWithEmailAndPassword(correo, contraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()) {
-                    String id=mAuth.getCurrentUser().getUid();
 
-                    mDatabase.child("cliente").child(id).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.exists()){
-                                //se abre la interfaz cliente
-                                startActivity(new Intent(getApplicationContext(), LayoutCliente.class));
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-                    mDatabase.child("modista").child(id).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
-                            if(dataSnapshot1.exists()){
-
-                                startActivity(new Intent(getApplicationContext(), LayoutModista.class));
-
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
                     //hay que abrir otro activity
+                    abrirInterfaz();
+
                 } else {
                     Toast.makeText(getApplicationContext(), "¡Error Al iniciar sesión!, compruebe sus datos", Toast.LENGTH_LONG).show();
                 }
@@ -127,6 +98,42 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void abrirInterfaz(){
+
+        String id=mAuth.getCurrentUser().getUid();
+        mDatabase.child("cliente").child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    //se abre la interfaz cliente
+                    startActivity(new Intent(getApplicationContext(), LayoutCliente.class));
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        mDatabase.child("modista").child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
+                if(dataSnapshot1.exists()){
+                    Intent intent= new Intent(getApplicationContext(), LayoutModista.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 

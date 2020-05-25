@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".layout.FormularioRegistro" />
+        <activity android:name=".layout.LayoutModista" />
+        <activity android:name=".layout.LayoutCliente" />
     </application>
 
 </manifest>
