@@ -60,7 +60,6 @@ public class FormularioRegistro extends AppCompatActivity {
         etCorreo = (EditText) findViewById(R.id.etCorreo);
         etContraseña = (EditText) findViewById(R.id.etContraseña);
         etCelular = (EditText) findViewById(R.id.etCelular);
-        spinner = (Spinner) findViewById(R.id.spinnerTipoUser);
         btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
         btnIrLogin = (Button) findViewById(R.id.btnIrLogin);
 
@@ -111,66 +110,40 @@ public class FormularioRegistro extends AppCompatActivity {
         });
     }
 
+
     private void registrarUsario() {
         //se registra el usario por medio de la identificación de firabase
         mAuth.createUserWithEmailAndPassword(correo, contraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isComplete()){
+                if (task.isComplete()) {
                     String idObt = mAuth.getCurrentUser().getUid();
                     //si selecciona al cliente, se crea la tabla
-                   if(spinner.getSelectedItem().equals("Cliente")){
-                       //se guarda en un map que se le pasara a la base de datos
-                       Map<String , Object> map = new HashMap<>();
-                       map.put("nombres",nombre);
-                       map.put("id",id);
-                       map.put("apellidos",apellidos);
-                       map.put("edad",edad);
-                       map.put("direccion",direccion);
-                       map.put("correo",correo);
-                       map.put("contraseña",contraseña);
-                       map.put("celular",celular);
 
-
-                       //se agregan los datos a la database realtime
-                      mDatabase.child("cliente").child(idObt).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                          @Override
-                          public void onComplete(@NonNull Task<Void> task) {
-                              //se abre el activity de login
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                //se cierra el activity del registro para evitar que el usario que se registro vuelva
-                                finish();
-                          }
-                      });
-                   } else if(spinner.getSelectedItem().equals("Modista")){
-                       //se repite lo que se uso el cliente, caso de la modista y se guarda en un map que se le pasara a la base de datos
-                       Map<String , Object> map = new HashMap<>();
-                       map.put("nombres",nombre);
-                       map.put("id",id);
-                       map.put("apellidos",apellidos);
-                       map.put("edad",edad);
-                       map.put("direccion",direccion);
-                       map.put("correo",correo);
-                       map.put("contraseña",contraseña);
-                       map.put("celular",celular);
-                       String idObte = mAuth.getCurrentUser().getUid();
-                       //se selecciona el id de referencia ofrecido por firebase
-                       // se le sobre carga con los datos y se guardan en el realtime database
-                       mDatabase.child("modista").child(idObte).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                           @Override
-                           public void onComplete(@NonNull Task<Void> task) {
-                               startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                               finish();
-                           }
-                       });
-                   }else{
-                       Toast.makeText(getApplicationContext(),"Ha ocurrido un error, por favor intente nuevamente", Toast.LENGTH_LONG).show();
-                   }
-                   //
+                    //se guarda en un map que se le pasara a la base de datos
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("nombres", nombre);
+                    map.put("id", id);
+                    map.put("apellidos", apellidos);
+                    map.put("edad", edad);
+                    map.put("direccion", direccion);
+                    map.put("correo", correo);
+                    map.put("contraseña", contraseña);
+                    map.put("celular", celular);
+                    //se agregan los datos a la database realtime
+                    mDatabase.child("cliente").child(idObt).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            //se abre el activity de login
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            //se cierra el activity del registro para evitar que el usario que se registro vuelva
+                            finish();
+                        }
+                    });
                 }
-                }
-
+            }
         });
+
     }
 
     @Override
@@ -213,5 +186,8 @@ public class FormularioRegistro extends AppCompatActivity {
         }
 
     }
-    }
+        }
+
+
+
 

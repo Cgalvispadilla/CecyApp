@@ -118,6 +118,7 @@
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv.nuevacontraseña">
 
@@ -135,6 +136,7 @@
             app:helperTextEnabled="true"
             app:hintAnimationEnabled="true" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:id="@+id/textView2"
@@ -161,4 +163,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt.confirmarcambio" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
