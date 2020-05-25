@@ -5,6 +5,7 @@ import android.widget.ScrollView;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.cecyapp.R;
 import com.google.android.material.tabs.TabItem;
@@ -14,10 +15,17 @@ public class LayoutCliente extends AppCompatActivity {
     public Toolbar toolbar;
     public TabItem tabItem;
     public TabLayout tabLayout;
-    public ScrollView Scrollview;
+    public ViewPager viewPager;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_cliente);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+        setUpViewPager(viewPager);
 
 }
+
+    private void setUpViewPager(ViewPager viewPager) {
+    }
 }
