@@ -20,9 +20,7 @@ public class LayoutCliente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_cliente);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
         tabLayout.setupWithViewPager(viewPager);
-        setUpViewPager(viewPager);
 
 }
 

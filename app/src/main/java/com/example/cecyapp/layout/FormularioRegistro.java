@@ -17,6 +17,7 @@ import com.example.cecyapp.MainActivity;
 import com.example.cecyapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +35,7 @@ public class FormularioRegistro extends AppCompatActivity {
     //se crea el spiner para la selección de tipo de usario
     private Spinner spinner;
     //se agregan lo edittext referente al formulario
-    private EditText etId, etNombres, etApellidos, etEdad, etDireccion, etContraseña, etCorreo, etCelular;
+    private TextInputEditText etId, etNombres, etApellidos, etEdad, etDireccion, etContraseña, etCorreo, etCelular;
     //se agrega el boton de registro
     private Button btnRegistrar;
     private Button btnIrLogin;
@@ -52,14 +53,14 @@ public class FormularioRegistro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.formulario_registro);
         //se inician los
-        etId= (EditText) findViewById(R.id.etId);
-        etNombres = (EditText) findViewById(R.id.etNombreRegistro);
-        etApellidos = (EditText) findViewById(R.id.etApellido);
-        etEdad = (EditText) findViewById(R.id.etEdad);
-        etDireccion = (EditText) findViewById(R.id.etDireccion);
-        etCorreo = (EditText) findViewById(R.id.etCorreo);
-        etContraseña = (EditText) findViewById(R.id.etContraseña);
-        etCelular = (EditText) findViewById(R.id.etCelular);
+        etId= (TextInputEditText) findViewById(R.id.etId);
+        etNombres = (TextInputEditText) findViewById(R.id.etNombreRegistro);
+        etApellidos = (TextInputEditText) findViewById(R.id.etApellido);
+        etEdad = (TextInputEditText) findViewById(R.id.etEdad);
+        etDireccion = (TextInputEditText) findViewById(R.id.etDireccion);
+        etCorreo = (TextInputEditText) findViewById(R.id.etCorreo);
+        etContraseña = (TextInputEditText) findViewById(R.id.etContraseña);
+        etCelular = (TextInputEditText) findViewById(R.id.etCelular);
         btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
         btnIrLogin = (Button) findViewById(R.id.btnIrLogin);
 
