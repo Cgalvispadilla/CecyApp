@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cecyapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +29,7 @@ import java.util.Map;
 
 public class LayoutOlvidarContrasena extends AppCompatActivity {
 
-    private TextView tvCorreo, tvContraseña1, tvContraseña2;
+    private TextInputEditText tvCorreo, tvContraseña1, tvContraseña2;
     private Button btnContra;
     private  String correo, contraseña1, contraseña2,  contraVieja;
 
@@ -40,9 +41,9 @@ public class LayoutOlvidarContrasena extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_olvidar_contrasena);
-        tvCorreo =(TextView) findViewById(R.id.imput_recuperarcorreo);
-        tvContraseña1=(TextView) findViewById(R.id.imput_newpass1);
-        tvContraseña2=(TextView) findViewById(R.id.imput_newpass2);
+        tvCorreo =(TextInputEditText) findViewById(R.id.imput_recuperarcorreo);
+        tvContraseña1=(TextInputEditText) findViewById(R.id.imput_newpass1);
+        tvContraseña2=(TextInputEditText) findViewById(R.id.imput_newpass2);
         btnContra=(Button) findViewById(R.id.bt_confirmarcambio);
 
         mAuth= FirebaseAuth.getInstance();
