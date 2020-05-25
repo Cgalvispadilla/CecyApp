@@ -82,14 +82,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void ingresarUsuario() {
 
-        mAuth.signInWithEmailAndPassword(correo, contraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(correo, contraseña).addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()) {
 
-                    //hay que abrir otro activity
-                    abrirInterfaz();
+                   startActivity(new Intent(getApplicationContext(), LayoutCliente.class));
 
                 } else {
                     Toast.makeText(getApplicationContext(), "¡Error Al iniciar sesión!, compruebe sus datos", Toast.LENGTH_LONG).show();

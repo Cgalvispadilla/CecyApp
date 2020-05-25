@@ -17,6 +17,7 @@ import com.example.cecyapp.MainActivity;
 import com.example.cecyapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -31,10 +32,9 @@ import java.util.Map;
 
 
 public class FormularioRegistro extends AppCompatActivity {
-    //se crea el spiner para la selección de tipo de usario
-    private Spinner spinner;
+
     //se agregan lo edittext referente al formulario
-    private EditText etId, etNombres, etApellidos, etEdad, etDireccion, etContraseña, etCorreo, etCelular;
+    private TextInputEditText etId, etNombres, etApellidos, etEdad, etDireccion, etContraseña, etCorreo, etCelular;
     //se agrega el boton de registro
     private Button btnRegistrar;
     private Button btnIrLogin;
@@ -47,25 +47,23 @@ public class FormularioRegistro extends AppCompatActivity {
     FirebaseAuth mAuth;
     //se crea la variable de la base de datos
     DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.formulario_registro);
-        //se inician los
-        etId= (EditText) findViewById(R.id.etId);
-        etNombres = (EditText) findViewById(R.id.etNombreRegistro);
-        etApellidos = (EditText) findViewById(R.id.etApellido);
-        etEdad = (EditText) findViewById(R.id.etEdad);
-        etDireccion = (EditText) findViewById(R.id.etDireccion);
-        etCorreo = (EditText) findViewById(R.id.etCorreo);
-        etContraseña = (EditText) findViewById(R.id.etContraseña);
-        etCelular = (EditText) findViewById(R.id.etCelular);
+
+        etId= (TextInputEditText ) findViewById(R.id.etId);
+        etNombres = (TextInputEditText ) findViewById(R.id.lay_etNombreRegistro);
+        etApellidos = (TextInputEditText ) findViewById(R.id.etApellido);
+        etEdad = (TextInputEditText ) findViewById(R.id.etEdad);
+        etDireccion = (TextInputEditText) findViewById(R.id.etDireccion);
+        etCorreo = (TextInputEditText ) findViewById(R.id.etCorreo);
+        etContraseña = (TextInputEditText ) findViewById(R.id.etContraseña);
+        etCelular = (TextInputEditText ) findViewById(R.id.etCelular);
         btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
         btnIrLogin = (Button) findViewById(R.id.btnIrLogin);
 
-        String [] opciones= {"Tipo de usario", "Cliente", "Modista"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones);
-        spinner.setAdapter(adapter);
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -81,12 +79,7 @@ public class FormularioRegistro extends AppCompatActivity {
                 correo = etCorreo.getText().toString();
                 contraseña = etContraseña.getText().toString();
                 celular= etCelular.getText().toString();
-                //se guarda donde seleccionara el tipo de usario
-                if(spinner.getSelectedItemPosition()>0) {
-                    String seleccion = spinner.getSelectedItem().toString();
-                }else{
-                    Toast.makeText(getApplicationContext(), "No ha seleccionado el tipo de usario",Toast.LENGTH_LONG).show();
-                }
+
 
                 //se valida que ningun campo se encuentre vació
                 if(id!=0 && edad != 0 && !nombre.isEmpty() && !apellidos.isEmpty() && !direccion.isEmpty() && !celular.isEmpty() && !correo.isEmpty() && !contraseña.isEmpty()){
@@ -146,46 +139,7 @@ public class FormularioRegistro extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //se valida que el usario ya haya iniciado sesión
-        if(mAuth.getCurrentUser()!=null){
-            //startActivity(new Intent(getApplicationContext(), )); se abre la otra activity
-            String id=mAuth.getCurrentUser().getUid();
-            mDatabase.child("cliente").child(id).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.exists()){
-                        //se abre la interfaz cliente
-                        startActivity(new Intent(getApplicationContext(), LayoutCliente.class));
-                        finish();
-                    }
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-            mDatabase.child("modista").child(id).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
-                    if(dataSnapshot1.exists()){
-                        //se abre la interfaz modista
-                        startActivity(new Intent(getApplicationContext(), LayoutModista.class));
-                        finish();
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-        }
-
-    }
         }
 
 
