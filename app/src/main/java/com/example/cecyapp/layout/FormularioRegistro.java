@@ -34,7 +34,7 @@ import java.util.Map;
 public class FormularioRegistro extends AppCompatActivity {
 
     //se agregan lo edittext referente al formulario
-    private TextInputEditText etId, etNombres, etApellidos, etEdad, etDireccion, etContraseña, etCorreo, etCelular;
+    private EditText etId, etNombres, etApellidos, etEdad, etDireccion, etContraseña, etCorreo, etCelular;
     //se agrega el boton de registro
     private Button btnRegistrar;
     private Button btnIrLogin;
@@ -53,14 +53,14 @@ public class FormularioRegistro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.formulario_registro);
 
-        etId= (TextInputEditText ) findViewById(R.id.etId);
-        etNombres = (TextInputEditText ) findViewById(R.id.lay_etNombreRegistro);
-        etApellidos = (TextInputEditText ) findViewById(R.id.etApellido);
-        etEdad = (TextInputEditText ) findViewById(R.id.etEdad);
-        etDireccion = (TextInputEditText) findViewById(R.id.etDireccion);
-        etCorreo = (TextInputEditText ) findViewById(R.id.etCorreo);
-        etContraseña = (TextInputEditText ) findViewById(R.id.etContraseña);
-        etCelular = (TextInputEditText ) findViewById(R.id.etCelular);
+        etId= (EditText ) findViewById(R.id.etId);
+        etNombres = (EditText ) findViewById(R.id.etNombreRegistro);
+        etApellidos = (EditText ) findViewById(R.id.etApellido);
+        etEdad = (EditText ) findViewById(R.id.etEdad);
+        etDireccion = (EditText) findViewById(R.id.etDireccion);
+        etCorreo = (EditText ) findViewById(R.id.etCorreo);
+        etContraseña = (EditText ) findViewById(R.id.etContraseña);
+        etCelular = (EditText ) findViewById(R.id.etCelular);
         btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
         btnIrLogin = (Button) findViewById(R.id.btnIrLogin);
 

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lay.registro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/secondaryColor"
@@ -16,360 +17,139 @@
         android:fontFamily="@font/rubik_regular"
         android:text="@string/registrar"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/scrollview"
-        style="@android:style/Widget.Material.ScrollView"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/etId"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="35dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tv.regis" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:textAlignment="center">
+    <EditText
+        android:id="@+id/etNombreRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etId" />
 
+    <EditText
+        android:id="@+id/etApellido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreRegistro" />
 
-            <TextView
-                android:id="@+id/tv.infopersonal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Información Personal"
-                android:textAlignment="center" />
+    <EditText
+        android:id="@+id/etEdad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etApellido" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:clipToPadding="false"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv.infopersonal">
+    <EditText
+        android:id="@+id/etDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEdad" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+    <EditText
+        android:id="@+id/etCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDireccion" />
 
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="42dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/cancel"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:backgroundTintMode="add"
-                        app:srcCompat="@drawable/ic_account_box_black_24dp" />
+    <EditText
+        android:id="@+id/etContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCorreo" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+    <EditText
+        android:id="@+id/etCelular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etContraseña" />
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/lay.etNombreRegistro"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:textColorHint="@color/textColor">
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="32dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCelular" />
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etNombreRegistro"
-                                android:layout_width="280dp"
-                                android:layout_height="48dp"
-                                android:fontFamily="@font/rubik_regular"
-                                android:hint="Nombres"
-                                android:inputType="text"
-                                android:paddingStart="10dp"
-                                android:textColor="@color/textColor"
-                                android:textColorHint="@color/colorPrimary" />
-                        </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/btnIrLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.309"
+        app:layout_constraintStart_toEndOf="@+id/btnRegistrar"
+        app:layout_constraintTop_toBottomOf="@+id/etCelular" />
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/lay.etApellidos"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:textColorHint="@color/textColor">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etApellido"
-                                android:layout_width="280dp"
-                                android:layout_height="48dp"
-                                android:fontFamily="@font/rubik_regular"
-                                android:hint="Apellidos"
-                                android:inputType="text"
-                                android:paddingStart="10dp"
-                                android:textColor="@color/textColor"
-                                android:textColorHint="@color/colorPrimary" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/lay.etEdad"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:textColorHint="@color/textColor">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etEdad"
-                                android:layout_width="280dp"
-                                android:layout_height="48dp"
-                                android:fontFamily="@font/rubik_regular"
-                                android:hint="Edad"
-                                android:inputType="text"
-                                android:paddingStart="10dp"
-                                android:textColor="@color/textColor"
-                                android:textColorHint="@color/colorPrimary" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/lay.etId"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:textColorHint="@color/textColor">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etId"
-                                android:layout_width="280dp"
-                                android:layout_height="48dp"
-                                android:fontFamily="@font/rubik_regular"
-                                android:hint="Identificación"
-                                android:inputType="text"
-                                android:paddingStart="10dp"
-                                android:textColor="@color/textColor"
-                                android:textColorHint="@color/colorPrimary" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView5"
-                        android:layout_width="81dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/cancel"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:backgroundTintMode="add"
-                        app:srcCompat="@drawable/ic_place_black_24dp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/lay.etDireccion"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColorHint="@color/textColor">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etDireccion"
-                            android:layout_width="280dp"
-                            android:layout_height="48dp"
-                            android:fontFamily="@font/rubik_regular"
-                            android:hint="Dirección"
-                            android:inputType="text"
-                            android:paddingStart="10dp"
-                            android:textColor="@color/textColor"
-                            android:textColorHint="@color/colorPrimary" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="81dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/cancel"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:backgroundTintMode="add"
-                        app:srcCompat="@drawable/ic_call_black_24dp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/lay.etCelular"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColorHint="@color/textColor">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etCelular"
-                            android:layout_width="280dp"
-                            android:layout_height="48dp"
-                            android:fontFamily="@font/rubik_regular"
-                            android:hint="Teléfono"
-                            android:inputType="text"
-                            android:paddingStart="10dp"
-                            android:textColor="@color/textColor"
-                            android:textColorHint="@color/colorPrimary" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Datos de cuenta"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.146"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView7"
-                        android:layout_width="42dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/cancel"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:backgroundTintMode="add"
-                        app:srcCompat="@drawable/ic_email_black_24dp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/lay.etCorreo"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColorHint="@color/textColor">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etCorreo"
-                            android:layout_width="280dp"
-                            android:layout_height="48dp"
-                            android:fontFamily="@font/rubik_regular"
-                            android:hint="@string/correo"
-                            android:inputType="text"
-                            android:paddingStart="10dp"
-                            android:textColor="@color/textColor"
-                            android:textColorHint="@color/colorPrimary" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/cancel"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:backgroundTintMode="add"
-                        app:srcCompat="@drawable/ic_lock_black_24dp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/lay.etContraseña"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColorHint="@color/textColor">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etContraseña"
-                            android:layout_width="280dp"
-                            android:layout_height="48dp"
-                            android:fontFamily="@font/rubik_regular"
-                            android:hint="@string/contraseña"
-                            android:inputType="text"
-                            android:paddingStart="10dp"
-                            android:textColor="@color/textColor"
-                            android:textColorHint="@color/colorPrimary" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnRegistrar"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    android:layout_width="156dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/registrar"
-                    android:textColor="@color/secondaryLightColor"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/btnIrLogin"
-                    app:layout_constraintHorizontal_bias="0.391"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteY="593dp" />
-
-                <Button
-                    android:id="@+id/btnIrLogin"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Ya estoy registrado"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="659dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
