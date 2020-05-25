@@ -138,7 +138,46 @@ public class FormularioRegistro extends AppCompatActivity {
         });
 
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //se valida que el usario ya haya iniciado sesión
+        if(mAuth.getCurrentUser()!=null){
+            //startActivity(new Intent(getApplicationContext(), )); se abre la otra activity
+            String id=mAuth.getCurrentUser().getUid();
+            mDatabase.child("cliente").child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        //se abre la interfaz cliente
+                        startActivity(new Intent(getApplicationContext(), LayoutCliente.class));
+                        finish();
+                    }
+                }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+            mDatabase.child("modista").child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
+                    if(dataSnapshot1.exists()){
+                        //se abre la interfaz modista
+                        startActivity(new Intent(getApplicationContext(), LayoutModista.class));
+                        finish();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+    }
 
         }
 
