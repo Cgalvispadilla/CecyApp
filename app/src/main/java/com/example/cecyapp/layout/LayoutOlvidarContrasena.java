@@ -41,6 +41,7 @@ public class LayoutOlvidarContrasena extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_olvidar_contrasena);
+
         tvCorreo =(TextInputEditText) findViewById(R.id.imput_recuperarcorreo);
         tvContraseña1=(TextInputEditText) findViewById(R.id.imput_newpass1);
         tvContraseña2=(TextInputEditText) findViewById(R.id.imput_newpass2);
@@ -71,7 +72,7 @@ public class LayoutOlvidarContrasena extends AppCompatActivity {
         if(!correo.isEmpty()&&!contraseña1.isEmpty()&&!contraseña2.isEmpty()) {
             if(contraseña2.equals(contraseña1)){
                 if(user.getEmail().equals(correo)){
-                    mDatabase.child("Cliente").addValueEventListener(new ValueEventListener() {
+                    mDatabase.child("cliente").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
@@ -90,7 +91,7 @@ public class LayoutOlvidarContrasena extends AppCompatActivity {
                                                             if (task.isSuccessful()) {
                                                                 Map<String,Object> actualización = new HashMap<>();
                                                                 actualización.put("contraseña",contraseña1);
-                                                                mDatabase.child("Cliente").updateChildren(actualización);
+                                                                mDatabase.child("cliente").updateChildren(actualización);
                                                                 Toast.makeText(getApplicationContext(),"Se cambio correctamente la contraseña", Toast.LENGTH_LONG).show();
                                                             }
                                                         }

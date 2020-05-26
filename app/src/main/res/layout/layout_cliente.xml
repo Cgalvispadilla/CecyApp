@@ -52,6 +52,12 @@
                 android:icon="@drawable/ic_group_black_24dp"
                 android:text="¿Quienes Somos?" />
         </com.google.android.material.tabs.TabLayout>
+
+        <Button
+            android:id="@+id/btnSalir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salir" />
     </com.google.android.material.appbar.AppBarLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

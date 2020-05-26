@@ -3,10 +3,8 @@ package com.example.cecyapp.layout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -52,7 +50,6 @@ public class FormularioRegistro extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.formulario_registro);
-
         etId= (EditText ) findViewById(R.id.etId);
         etNombres = (EditText ) findViewById(R.id.etNombreRegistro);
         etApellidos = (EditText ) findViewById(R.id.etApellido);
@@ -128,7 +125,7 @@ public class FormularioRegistro extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             //se abre el activity de login
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), LayoutCliente.class));
                             //se cierra el activity del registro para evitar que el usario que se registro vuelva
                             finish();
                         }
@@ -160,21 +157,7 @@ public class FormularioRegistro extends AppCompatActivity {
 
                 }
             });
-            mDatabase.child("modista").child(id).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
-                    if(dataSnapshot1.exists()){
-                        //se abre la interfaz modista
-                        startActivity(new Intent(getApplicationContext(), LayoutModista.class));
-                        finish();
-                    }
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
         }
 
     }

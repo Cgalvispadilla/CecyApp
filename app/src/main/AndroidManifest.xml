@@ -21,6 +21,7 @@
         <activity android:name=".layout.FormularioRegistro" />
         <activity android:name=".layout.LayoutModista" />
         <activity android:name=".layout.LayoutCliente" />
+        <activity android:name=".layout.LayoutOlvidarContrasena"></activity>
     </application>
 
 </manifest>

@@ -5,14 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cecyapp.layout.FormularioRegistro;
 import com.example.cecyapp.layout.LayoutCliente;
 import com.example.cecyapp.layout.LayoutModista;
+import com.example.cecyapp.layout.LayoutOlvidarContrasena;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -28,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class MainActivity extends AppCompatActivity {
-    private TextView  tvRegistro;
+    private TextView  tvRegistro, tvOlvidarContraseña;
     private TextInputEditText tvCorreoEle;
     private TextInputEditText tvContraseña;
     private Button btnSesion;
@@ -46,11 +49,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tvRegistro = (TextView) findViewById(R.id.tv_registro);
+        tvOlvidarContraseña=(TextView) findViewById(R.id.tv_olvidarpass);
         tvCorreoEle = (TextInputEditText) findViewById(R.id.imput_usuario);
         tvContraseña = (TextInputEditText) findViewById(R.id.imput_contra);
         btnSesion = (Button) findViewById(R.id.but_iniciarsesion);
+
         mAuth = FirebaseAuth.getInstance();
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
 
 
@@ -62,8 +69,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 correo = tvCorreoEle.getText().toString();
                 contraseña = tvContraseña.getText().toString();
+                Log.e("contra",contraseña);
+                Log.e("correo",correo);
                 if (!correo.isEmpty() && !contraseña.isEmpty()) {
-                    ingresarUsuario();
+
+                    if(contraseña.length()<6){
+                        Toast.makeText(getApplicationContext(), "la contraseña debe tener más de caracteres", Toast.LENGTH_LONG).show();
+                    }else{
+                        ingresarUsuario();
+                    }
 
                 } else {
                     Toast.makeText(getApplicationContext(), "Debe llenar todos los campos", Toast.LENGTH_LONG).show();
@@ -76,25 +90,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), FormularioRegistro.class));
             }
         });
+        tvOlvidarContraseña.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(), LayoutOlvidarContrasena.class));
+            }
+        });
     }
 
 
     private void ingresarUsuario() {
-
-        mAuth.signInWithEmailAndPassword(correo, contraseña).addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
-
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isComplete()) {
-
-                   startActivity(new Intent(getApplicationContext(), LayoutCliente.class));
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "¡Error Al iniciar sesión!, compruebe sus datos", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
+      mAuth.signInWithEmailAndPassword(correo, contraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+          @Override
+          public void onComplete(@NonNull Task<AuthResult> task) {
+              if(task.isSuccessful()){
+                  abrirInterfaz();
+              }else{
+                  Toast.makeText(getApplicationContext(),"Error, sus datos son incorrectos",Toast.LENGTH_LONG).show();
+              }
+          }
+      });
 
     }
 
@@ -105,9 +121,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    //se abre la interfaz cliente
-                    startActivity(new Intent(getApplicationContext(), LayoutCliente.class));
-                    finish();
+                    //se abre la interfaz cliente+
+                    String corr=dataSnapshot.child("correo").getValue().toString();
+                    String contra=dataSnapshot.child("contraseña").getValue().toString();
+
+                    if(corr.equals(correo)&&contra.equals(contraseña)){
+                        startActivity(new Intent(getApplicationContext(), LayoutCliente.class));
+                        finish();
+                    }
+
                 }
             }
 
@@ -120,10 +142,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
                 if(dataSnapshot1.exists()){
-                    Intent intent= new Intent(getApplicationContext(), LayoutModista.class);
-                    startActivity(intent);
-                    finish();
+                    String corr=dataSnapshot1.child("correo").getValue().toString();
+                    String contra=dataSnapshot1.child("contraseña").getValue().toString();
 
+                    if(corr.equals(correo)&&contra.equals(contraseña)) {
+                        Intent intent = new Intent(getApplicationContext(), LayoutModista.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
             }
 
