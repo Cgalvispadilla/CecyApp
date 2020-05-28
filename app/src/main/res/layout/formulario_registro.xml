@@ -10,91 +10,81 @@
     tools:context=".layout.FormularioRegistro">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center|center_horizontal"
-        android:orientation="horizontal"
+        android:clipToPadding="false"
+        android:divider="@drawable/divider"
+        android:orientation="vertical"
+        android:showDividers="middle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            app:srcCompat="@drawable/ic_account_box_black_24dp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/etNombreRegistro"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:divider="@drawable/divider"
-            android:orientation="vertical"
-            android:paddingLeft="5dp"
-            android:showDividers="middle">
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_imput"
+            android:drawableLeft="@drawable/ic_nombre"
+            android:ems="10"
+            android:hint="Nombres"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/etDireccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_imput"
-                android:hint="@string/direccion"
-                android:inputType="textPersonName"
-                android:layout_marginBottom="5dp"/>
+        <EditText
+            android:id="@+id/etApellido"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_imput"
+            android:drawableLeft="@drawable/ic_nombre"
+            android:ems="10"
+            android:hint="@string/apellidos"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/etNombreRegistro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_imput"
-                android:ems="10"
-                android:hint="Nombres"
-                android:inputType="textPersonName"
-                android:layout_marginBottom="5dp"/>
+        <EditText
+            android:id="@+id/etEdad"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_imput"
+            android:drawableLeft="@drawable/ic_adulto"
+            android:ems="10"
+            android:hint="@string/edad"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/etApellido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_imput"
-                android:ems="10"
-                android:hint="@string/apellidos"
-                android:layout_marginBottom="5dp"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/etDireccion"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_imput"
+            android:drawableLeft="@drawable/ic_ubicacion"
+            android:hint="@string/direccion"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/etEdad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_imput"
-                android:ems="10"
-                android:hint="@string/edad"
-                android:inputType="textPersonName"
-                android:layout_marginBottom="5dp"/>
+        <EditText
+            android:id="@+id/etId"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_imput"
+            android:drawableLeft="@drawable/ic_assignment_ind_black_24dp"
+            android:ems="10"
+            android:hint="Identificación"
+            android:inputType="number" />
 
-            <EditText
-                android:id="@+id/etId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_imput"
-                android:ems="10"
-                android:hint="Identificación"
-                android:inputType="number"
-                android:layout_marginBottom="5dp"/>
-
-            <EditText
-                android:id="@+id/etCelular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_imput"
-                android:ems="10"
-                android:hint="@string/celular"
-                android:inputType="textPersonName" />
-        </LinearLayout>
+        <EditText
+            android:id="@+id/etCelular"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_imput"
+            android:drawableLeft="@drawable/ic_telefono_inteligente"
+            android:ems="10"
+            android:hint="@string/celular"
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <TextView
@@ -179,11 +169,11 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Datos de cuenta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
