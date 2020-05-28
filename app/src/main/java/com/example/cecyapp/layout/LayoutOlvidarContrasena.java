@@ -55,14 +55,15 @@ public class LayoutOlvidarContrasena extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //se valida que no haya ningún campo vació
+
+                cambiarContraseña();
 
             }
         });
 
     }
 
-    private void CambiarContraseña() {
+    private void cambiarContraseña() {
 
 
         correo= tvCorreo.getText().toString();
