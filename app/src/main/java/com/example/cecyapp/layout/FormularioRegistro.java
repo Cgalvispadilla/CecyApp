@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cecyapp.MainActivity;
 import com.example.cecyapp.R;
+import com.example.cecyapp.clases.Validaciones;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -30,6 +31,8 @@ import java.util.Map;
 
 
 public class FormularioRegistro extends AppCompatActivity {
+
+    Validaciones validaciones= new Validaciones();
 
     //se agregan lo edittext referente al formulario
     private EditText etId, etNombres, etApellidos, etEdad, etDireccion, etContraseña, etCorreo, etCelular;
@@ -68,6 +71,8 @@ public class FormularioRegistro extends AppCompatActivity {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(validaciones.ValidarCorreo(etCorreo.getText().toString()) && validaciones.validarNumeros(etId.getText().toString())&&validaciones.validarNumeros(etEdad.getText().toString()) && validaciones.validarNumeros(etCelular.getText().toString())
+                   && validaciones.validarTexto(etNombres.getText().toString()) && validaciones.validarTexto(etApellidos.getText().toString())) {
                 id = Integer.parseInt(etId.getText().toString());
                 nombre = etNombres.getText().toString();
                 apellidos= etApellidos.getText().toString();
@@ -80,15 +85,19 @@ public class FormularioRegistro extends AppCompatActivity {
 
                 //se valida que ningun campo se encuentre vació
                 if(id!=0 && edad != 0 && !nombre.isEmpty() && !apellidos.isEmpty() && !direccion.isEmpty() && !celular.isEmpty() && !correo.isEmpty() && !contraseña.isEmpty()){
-                    //se valida que la contraseña tenga más de 6 caracteres
-                    if(contraseña.length()>6) {
-                        registrarUsario();
-                    }else{
-                        Toast.makeText(getApplicationContext(), "La contraseña debe de tener más de 6 caracteres",Toast.LENGTH_LONG).show();
-                    }
 
-                }else{
+                       //se valida que la contraseña tenga más de 6 caracteres
+                       if (contraseña.length() > 6) {
+
+                           registrarUsario();
+                       } else {
+                           Toast.makeText(getApplicationContext(), "La contraseña debe de tener más de 6 caracteres", Toast.LENGTH_LONG).show();
+                       }
+                   }else{
                     Toast.makeText(getApplicationContext(), "¡Error! Se encuentra algun campo vació, por favor llenar todos",Toast.LENGTH_LONG).show();
+                   }
+                }else{
+                    Toast.makeText(getApplicationContext(), "¡Error!,Recuerde llenar los campos de manera correcta", Toast.LENGTH_LONG).show();
                 }
             }
         });

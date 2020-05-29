@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cecyapp.clases.Validaciones;
 import com.example.cecyapp.layout.FormularioRegistro;
 import com.example.cecyapp.layout.LayoutCliente;
 import com.example.cecyapp.layout.LayoutModista;
@@ -31,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class MainActivity extends AppCompatActivity {
+    Validaciones validaciones= new Validaciones();
     private TextView  tvRegistro, tvOlvidarContraseña;
     private TextInputEditText tvCorreoEle;
     private TextInputEditText tvContraseña;
@@ -72,14 +74,18 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("contra",contraseña);
                 Log.e("correo",correo);
                 if (!correo.isEmpty() && !contraseña.isEmpty()) {
+                    if (validaciones.ValidarCorreo(correo)) {
 
-                    if(contraseña.length()<6){
-                        Toast.makeText(getApplicationContext(), "la contraseña debe tener más de caracteres", Toast.LENGTH_LONG).show();
-                    }else{
-                        ingresarUsuario();
+                        if (contraseña.length() < 6) {
+                            Toast.makeText(getApplicationContext(), "la contraseña debe tener más de caracteres", Toast.LENGTH_LONG).show();
+                        } else {
+                            ingresarUsuario();
+                        }
+
+                           } else {
+                        Toast.makeText(getApplicationContext(), "Debe ingresar un correo valido", Toast.LENGTH_LONG).show();
                     }
-
-                } else {
+                }else{
                     Toast.makeText(getApplicationContext(), "Debe llenar todos los campos", Toast.LENGTH_LONG).show();
                 }
             }
